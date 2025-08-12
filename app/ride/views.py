@@ -1,5 +1,7 @@
 from drf_spectacular.utils import extend_schema_view, extend_schema
 from rest_framework import viewsets, authentication, permissions
+from rest_framework.pagination import PageNumberPagination
+from .permissions import IsAdminRole
 from .serializers import RideSerializer
 from core.models import Ride
 
@@ -16,4 +18,5 @@ class RideViewSet(viewsets.ModelViewSet):
     serializer_class = RideSerializer
     queryset = Ride.objects.select_related('id_rider', 'id_driver').prefetch_related('events')
     authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsAdminRole]
+    pagination_class = PageNumberPagination
