@@ -5,6 +5,8 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
+from .models import Ride, RideEvent
+
 from core import models
 
 
@@ -58,6 +60,18 @@ class UserAdmin(BaseUserAdmin):
             )
         }),
     )
+class RideEventInline(admin.TabularInline):
+    model = RideEvent
+    extra = 0
+    readonly_fields = ('description', 'created_at')
+    can_delete = False
+
+@admin.register(Ride)
+class RideAdmin(admin.ModelAdmin):
+    list_display = ('id_ride', 'status', 'id_rider', 'id_driver', 'pickup_time')
+    list_filter = ('status',)
+    inlines = [RideEventInline]
+
 
 admin.site.register(models.User, UserAdmin)
 
