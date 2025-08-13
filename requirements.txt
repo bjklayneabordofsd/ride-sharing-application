@@ -1,4 +1,9 @@
 Django
 djangorestframework
 drf-spectacular
-django_filter   
+django_filter
+openpyxl
+gunicorn
+python-dotenv
+psycopg-binary
+psycopg
