@@ -5,6 +5,7 @@ from django.contrib.auth.models import (
     BaseUserManager,
     PermissionsMixin,
 )
+from django.utils import timezone
 
 class UserManager(BaseUserManager):
     """Manager for users."""
@@ -101,7 +102,7 @@ class RideEvent(models.Model):
         db_column='id_ride'
     )
     description = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(default=timezone.now)
     
     class Meta:
         db_table = 'ride_event'

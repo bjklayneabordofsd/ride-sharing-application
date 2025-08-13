@@ -1,4 +1,4 @@
 Django
 djangorestframework
 drf-spectacular
-django_filter
+django_filter   
