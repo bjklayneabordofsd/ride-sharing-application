@@ -20,6 +20,7 @@
 
 ## Starting Point: The Requirements
 Given three entities (User, Ride, RideEvent) and strict performance requirements, I needed to build an efficient ride management API with admin-only access.
+
 ![alt text](image.png)
 
 ## Challenge 1: Audit Trail Without Complexity
